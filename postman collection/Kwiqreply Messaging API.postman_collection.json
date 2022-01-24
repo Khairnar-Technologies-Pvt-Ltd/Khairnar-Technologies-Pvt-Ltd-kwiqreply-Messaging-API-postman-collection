@@ -1,0 +1,620 @@
+{
+	"info": {
+		"_postman_id": "e7bd71c7-f1d6-4de6-b489-f420a593d064",
+		"name": "Kwiqreply Messaging API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "1. Messages",
+			"item": [
+				{
+					"name": "1.1 Session Messages",
+					"item": [
+						{
+							"name": "Text Message",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AuthToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"to\" : \"{{whatsapp_number}}\" ,\r\n\t\"type\" : \"text\" ,\r\n\t\"text\" : {\r\n        \"body\" : \"<message>\"\r\n        }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Text Message with URL preview",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AuthToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"to\" : \"{{whatsapp_number}}\" ,\r\n\t\"type\" : \"text\" ,\r\n\t\"text\" : {\"body\" : \"<Message>\"},\r\n     \"preview_url\": true\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List Message",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AuthToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"to\": \"{{whatsapp_number}}\",\r\n    \"recipient_type\": \"individual\",\r\n    \"type\": \"interactive\",\r\n    \"interactive\": {\r\n        \"type\": \"list\",\r\n        \"header\": {\r\n            \"type\": \"text\",\r\n            \"text\": \"<Header List Message>\"\r\n        },\r\n        \"body\": {\r\n            \"text\": \"<List Body Message>\"\r\n        },\r\n        \"footer\": {\r\n            \"text\": \"<Footer Message>\"\r\n        },\r\n        \"action\": {\r\n            \"button\": \"Send\",\r\n            \"sections\": [\r\n                {\r\n                    \"title\": \"<Section 1>\",\r\n                    \"rows\": [\r\n                        {\r\n                            \"id\": \"<ID 1.1>\",\r\n                            \"title\": \"<Title 1.1>\",\r\n                            \"description\": \"<Description 1.1>\"\r\n                        },\r\n                        {\r\n                            \"id\": \"<ID 1.2>\",\r\n                            \"title\": \"<Title 1.2>\",\r\n                            \"description\": \"<Description 1.2>\"\r\n                        }\r\n                    ]\r\n                },\r\n                {\r\n                    \"title\": \"Section 2>\",\r\n                    \"rows\": [\r\n                        {\r\n                            \"id\": \"<ID 2.1>\",\r\n                            \"title\": \"<Title 2.1>\",\r\n                            \"description\": \"<Description 2.1>\"\r\n                        },\r\n                        {\r\n                            \"id\": \"<ID 2.2>\",\r\n                            \"title\": \"<Title 2.2>\",\r\n                            \"description\": \"<Description 2.2>\"\r\n                        }\r\n                    ]\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Button Message",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AuthToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"to\": \"{{whatsapp_number}}\",\r\n    \"recipient_type\": \"individual\",\r\n    \"type\": \"interactive\",\r\n    \"interactive\": {\r\n        \"type\": \"button\",\r\n        \"header\": {\r\n            \"type\": \"text\",\r\n            \"text\": \"<Header Text>\"\r\n        },\r\n        \"body\": {\r\n            \"text\": \"<Body Text>\"\r\n        },\r\n        \"footer\": {\r\n            \"text\": \"<Footer Text>\"\r\n        },\r\n        \"action\": {\r\n            \"buttons\": [\r\n                {\r\n                    \"type\": \"reply\",\r\n                    \"reply\": {\r\n                        \"id\": \"<Button 1 Text>\",\r\n                        \"title\": \"<Button 1>\"\r\n                    }\r\n                },\r\n                {\r\n                    \"type\": \"reply\",\r\n                    \"reply\": {\r\n                        \"id\": \"<Button 2 Text>\",\r\n                        \"title\": \"<Button 2>\"\r\n                    }\r\n                },\r\n                {\r\n                    \"type\": \"reply\",\r\n                    \"reply\": {\r\n                        \"id\": \"<Button 3 Text>\",\r\n                        \"title\": \"<Button 3>\"\r\n                    }\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Image Message",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AuthToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"to\": \"{{whatsapp_number}}\",\r\n    \"type\": \"image\",\r\n    \"recipient_type\": \"individual\",\r\n    \"image\": {\r\n        \"link\": \"<Link to Image, https>\",\r\n        \"caption\": \"<Media Caption>\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Document Message",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AuthToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"to\": \"{{whatsapp_number}}\",\r\n    \"type\": \"document\",\r\n    \"recipient_type\": \"individual\",\r\n    \"document\": {\r\n        \"caption\": \"<Message Caption>\",\r\n        \"link\": \"<Link to PDF, https>\",\r\n        \"filename\": \"<Filename>\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Audio Message",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AuthToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"to\": \"{{whatsapp_number}}\",\r\n    \"type\": \"audio\",\r\n    \"recipient_type\": \"individual\",\r\n    \"audio\": {\r\n        \"link\": \"<Link to Audio, https>\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Video Message",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AuthToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"to\": \"{{whatsapp_number}}\",\r\n    \"type\": \"video\",\r\n    \"recipient_type\": \"individual\",\r\n    \"video\": {\r\n        \"caption\": \"<Message Caption>\",\r\n        \"link\": \"<Link to Video, https>\"\r\n    }\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Contact Message",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AuthToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"to\": \"{{whatsapp_number}}\",\r\n  \"type\": \"contacts\",\r\n  \"recipient_type\": \"individual\",\r\n  \"contacts\": [\r\n  \t{\r\n  \t\t\"addresses\": [\r\n  \t\t\t{\r\n  \t\t\t\t\"city\": \"<Contact's City>\",\r\n  \t\t\t\t\"country\": \"<Contact's Country>\",\r\n  \t\t\t\t\"country_code\": \"<Contact's Country Code>\",\r\n  \t\t\t\t\"state\": \"<Contact's State>\",\r\n  \t\t\t\t\"street\": \"<Contact's Street>\",\r\n  \t\t\t\t\"type\": \"<Contact's Address Type>\",\r\n  \t\t\t\t\"zip\": \"<Contact's Zip Code>\"\r\n  \t\t\t}\r\n  \t\t],\r\n  \t\t\"birthday\": \"<Contact's Birthday>\",\r\n  \t\t\"emails\": [\r\n  \t\t\t{\r\n  \t\t\t\t\"email\": \"<Contact's Email>\",\r\n  \t\t\t\t\"type\": \"<Contact's Email Type>\"\r\n  \t\t\t}\r\n  \t\t],\r\n  \t\t\"ims\": [],\r\n  \t\t\"name\": {\r\n  \t\t\t\"first_name\": \"<Contact's First Name>\",\r\n  \t\t\t\"formatted_name\": \"<Contact's Formatted Name>\",\r\n  \t\t\t\"last_name\": \"<Contact's Last Name>\"\r\n  \t\t},\r\n  \t\t\"org\": {\r\n  \t\t\t\"company\": \"<Contact's Company>\"\r\n  \t\t},\r\n  \t\t\"phones\": [\r\n  \t\t\t{\r\n  \t\t\t\t\"phone\": \"<Contact's Phone Number>\",\r\n  \t\t\t\t\"type\": \"<Contact's Phone Number Type>\"\r\n  \t\t\t}\r\n  \t\t],\r\n  \t\t\"urls\": []\r\n  \t}\r\n  ]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Location Message",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AuthToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"to\": \"{{whatsapp_number}}\",\r\n  \"type\": \"location\",\r\n  \"recipient_type\": \"individual\",\r\n  \"location\": {\r\n    \"longitude\": \"<Longitude>\",\r\n    \"latitude\": \"<Latitude>\",\r\n    \"name\": \"<Location Name>\",\r\n    \"address\": \"<Location's Address>\"\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "1.2 Template Messages",
+					"item": [
+						{
+							"name": "Text Template Message",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AuthToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"to\": \"{{whatsapp_number}}\",\r\n\t\"type\": \"template\",\r\n\t\"template\": {\r\n\t\t\"namespace\": \"{{whatsapp_template_namespace}}\",\r\n    \t\"name\": \"<Message Template Element Name>\",\r\n        \"language\": {\r\n    \t\t\"policy\": \"deterministic\",\r\n    \t\t\"code\": \"<Message Template Language Code>\"\r\n        },\r\n        \"components\": [{\r\n            \"type\": \"body\",\r\n            \"parameters\": [\r\n                {\r\n                    \"type\": \"text\",\r\n                    \"text\": \"<param value>\"\r\n                },\r\n                {\r\n                    \"type\": \"text\",\r\n                    \"text\": \"<param value>\"\r\n                }\r\n            ]\r\n        }]\r\n\t}\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Media Template Message",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AuthToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"to\": \"{{whatsapp_number}}\",\r\n\t\"type\": \"template\",\r\n\t\"template\": {\r\n\t\t\"namespace\": \"{{whatsapp_template_namespace}}\",\r\n    \t\"name\": \"<Message Template Element Name>\",\r\n    \t\"language\": {\r\n    \t\t\"policy\": \"deterministic\",\r\n    \t\t\"code\": \"<Message Template Language Code>\"\r\n    \t},\r\n    \t\"components\": [\r\n    \t{\r\n    \t\t\"type\": \"header\",\r\n    \t\t\"parameters\": [\r\n    \t\t{\r\n    \t\t\t\"type\": \"image\",\r\n\t\t\t\t\"caption\": \"<Message Caption>\",\r\n\t\t\t\t\"link\": \"<Media HTTPS URL>\"\r\n    \t\t}\r\n    \t\t]\r\n    \t},\r\n    \t{\r\n    \t\t\"type\": \"body\",\r\n    \t\t\"parameters\": [\r\n    \t\t{\r\n    \t\t\t\"type\": \"text\",\r\n    \t\t\t\"text\": \"<Message Text Param>\"\r\n    \t\t}\r\n    \t\t]\r\n    \t}\r\n    \t]\r\n\t}\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Call-to-action Template Message",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AuthToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"to\": \"{{whatsapp_number}}\",\r\n\t\"type\": \"template\",\r\n\t\"template\": {\r\n\t\t\"namespace\": \"{{whatsapp_template_namespace}}\",\r\n    \t\"name\": \"<Message Template Element Name>\",\r\n    \t\"language\": {\r\n    \t\t\"policy\": \"deterministic\",\r\n    \t\t\"code\": \"<Message Template Language Code>\"\r\n    \t},\r\n    \t\"components\": [\r\n    \t\t{\r\n    \t\t\t\"type\": \"header\",\r\n    \t\t\t\"parameters\": {\r\n    \t\t\t\t\"type\": \"text\",\r\n    \t\t\t\t\"text\": \"<Param Text>\"\r\n    \t\t\t}\r\n    \t\t},\r\n    \t\t{\r\n    \t\t\t\"type\": \"body\",\r\n    \t\t\t\"parameters\": {\r\n    \t\t\t\t\"type\": \"text\",\r\n    \t\t\t\t\"text\": \"<Param Text>\"\r\n    \t\t\t}\r\n    \t\t},\r\n    \t\t{\r\n    \t\t\t\"type\": \"button\",\r\n    \t\t\t\"sub_type\": \"url\",\r\n    \t\t\t\"index\": \"1\",\r\n    \t\t\t\"parameters\": [\r\n    \t\t\t\t{\r\n    \t\t\t\t\t\"type\": \"text\",\r\n    \t\t\t\t\t\"text\": \"<Developer Defined Dynamic URL suffix>\"\r\n    \t\t\t\t}\r\n    \t\t\t]\r\n    \t\t}\r\n    \t]\r\n\t}\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Quick-Reply Template Message",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{AuthToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\t\"to\": \"{{whatsapp_number}}\",\r\n\t\"type\": \"template\",\r\n\t\"template\": {\r\n\t\t\"namespace\": \"{{whatsapp_template_namespace}}\",\r\n    \t\"name\": \"<Message Template Element Name>\",\r\n    \t\"language\": {\r\n    \t\t\"policy\": \"deterministic\",\r\n    \t\t\"code\": \"<Message Template Language Code>\"\r\n    \t},\r\n    \t\"components\": [\r\n    \t\t{\r\n    \t\t\t\"type\": \"header\",\r\n    \t\t\t\"parameters\": {\r\n    \t\t\t\t\"type\": \"text\",\r\n    \t\t\t\t\"text\": \"<Param Text>\"\r\n    \t\t\t}\r\n    \t\t},\r\n    \t\t{\r\n    \t\t\t\"type\": \"body\",\r\n    \t\t\t\"parameters\": {\r\n    \t\t\t\t\"type\": \"text\",\r\n    \t\t\t\t\"text\": \"<Param Text>\"\r\n    \t\t\t}\r\n    \t\t},\r\n    \t\t{\r\n    \t\t\t\"type\": \"button\",\r\n    \t\t\t\"sub_type\": \"quick_reply\",\r\n    \t\t\t\"index\": \"1\",\r\n    \t\t\t\"parameters\": [\r\n    \t\t\t\t{\r\n    \t\t\t\t\t\"type\": \"payload\",\r\n    \t\t\t\t\t\"payload\": \"<Developer Defined payload for quick reply>\"\r\n    \t\t\t\t}\r\n    \t\t\t]\r\n    \t\t}\r\n    \t]\r\n\t}\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/api/messages",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"api",
+										"messages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "2. Media",
+			"item": [
+				{
+					"name": "Retrieve Media using ID",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AuthToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n   \"media-id\":\"<Media-id>\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/media",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"media"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "3. Templates",
+			"item": [
+				{
+					"name": "Retriev Tempalates",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AuthToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/message_templates",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"message_templates"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
