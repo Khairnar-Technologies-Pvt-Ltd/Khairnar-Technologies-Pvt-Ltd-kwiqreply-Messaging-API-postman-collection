@@ -1,0 +1,1 @@
+# Khairnar-Technologies-Pvt-Ltd-kwiqreply-Messaging-API-postman-collection
