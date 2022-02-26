@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "18942bee-d9a5-4d09-b129-972ee5ed791e",
+		"_postman_id": "de22c28b-dd4b-4006-b029-bd12c70ced5a",
 		"name": "Kwiqreply Messaging API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -28,7 +28,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n\t\"to\" : \"{{whatsapp_number}}\" ,\r\n\t\"type\" : \"text\" ,\r\n\t\"text\" : {\r\n        \"body\" : \"<message>\"\r\n        }\r\n}",
+									"raw": "{\r\n\t\"to\" : \"{{whatsapp_number}}\" ,\r\n\t\"type\" : \"text\" ,\r\n\t\"text\" : {\r\n        \"body\" : \"<Message body>\"\r\n        }\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -688,6 +688,76 @@
 							"path": [
 								"api",
 								"check_contacts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "5. Webhook",
+			"item": [
+				{
+					"name": "get webhook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AuthToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/api/webhook",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"webhook"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update webhook",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AuthToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"webhooks\":{\n        \"url\" : \"<webhook url>\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/webhook",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"webhook"
 							]
 						}
 					},
