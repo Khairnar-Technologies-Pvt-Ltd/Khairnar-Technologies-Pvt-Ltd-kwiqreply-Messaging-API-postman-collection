@@ -764,6 +764,48 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "6. Contacts",
+			"item": [
+				{
+					"name": "6.1 Create or Update a Contact",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AuthToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"country_code\":\"91\",\n    \"phone_no\":\"123456789\",\n    \"segments\":[\"segment1\",\"segment2\"],\n    \"opted_in\":true,\n    \"first_name\":\"John\",\n    \"last_name\":\"Wick\",\n    \"email\":\"john.wick@gmail.com\",\n    \"gender\":\"male\",\n    \"age\":\"22\",\n    \"dob\":\"1995-12-30\",\n    \"company\":\"XYZ\",\n    \"address\":\"mumbai\",\n    \"city\":\"mumbai\",\n    \"state\":\"Maharastra\",\n    \"country\":\"India\",\n    \"pincode\":\"411023\",\n    \"occupation\":\"student\",\n    \"custom_attr1\":\"2nd Year\",\n    \"custom_attr2\":\"BCom\",\n    \"custom_attr3\":\"BCom\",\n    \"custom_attr4\":\"BCom\",\n    \"custom_attr5\":\"BCom\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/contacts",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"contacts"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }
