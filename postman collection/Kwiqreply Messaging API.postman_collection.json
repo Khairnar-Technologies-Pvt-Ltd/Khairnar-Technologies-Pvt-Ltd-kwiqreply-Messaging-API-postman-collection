@@ -1,8 +1,9 @@
 {
 	"info": {
-		"_postman_id": "4fff5a18-08e0-4d31-a37b-8e1bdd661002",
+		"_postman_id": "7f40dd8a-f1a1-4950-902f-9b8af3e965d6",
 		"name": "Kwiqreply Messaging API",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "14584062"
 	},
 	"item": [
 		{
@@ -376,6 +377,47 @@
 									"path": [
 										"api",
 										"messages"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "1.2 Template Message",
+					"item": [
+						{
+							"name": "Send Template",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n                \"company-name\" : \"<Company Name>\",\n                \"event-data\": {\n                    \"event-name\" : \"<Event Name>\",\n                    \"event-id\": \"<Event ID>\"\n                },\n                \"parameters\":{\n                    \"phone-number\":\"<phone no with country code>\",\n                    \"variables\":[\"<variables>\"],\n                    \"url-variable\":\"<url-endpoint>\",\n                    \"header\" : {\n                        \"link\" : \"<If it contains media then link of media>\",\n                    \"filename\":\"<required if the media type is of document type>\"\n                    }\n                }\n            }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://app.kwiqreply.io/v2.0/trigger_event?token={{token}}",
+									"protocol": "https",
+									"host": [
+										"app",
+										"kwiqreply",
+										"io"
+									],
+									"path": [
+										"v2.0",
+										"trigger_event"
+									],
+									"query": [
+										{
+											"key": "token",
+											"value": "{{token}}"
+										}
 									]
 								}
 							},
