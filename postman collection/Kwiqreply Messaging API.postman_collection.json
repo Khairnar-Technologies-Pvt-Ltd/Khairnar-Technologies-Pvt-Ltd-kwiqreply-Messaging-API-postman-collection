@@ -469,6 +469,40 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Upload Media",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AuthToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "file",
+							"file": {
+								"src": ""
+							}
+						},
+						"url": {
+							"raw": "{{url}}/api/media",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"media"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -476,7 +510,7 @@
 			"name": "3. Templates",
 			"item": [
 				{
-					"name": "Retriev Tempalates",
+					"name": "Retrieve All Tempalates",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -489,7 +523,54 @@
 							]
 						},
 						"method": "GET",
+						"header": [
+							{
+								"key": "event-id",
+								"value": "1",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/message_templates",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"message_templates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Templates",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AuthToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"<template name>\",\r\n    \"language\":\"<template language code>\",\r\n    \"category\":\"<template category>\",\r\n    \"components\":[\r\n        {\r\n            \"type\": \"BODY\",\r\n            \"text\": \"<body>\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
 							"raw": "{{url}}/api/message_templates",
 							"host": [
@@ -498,6 +579,50 @@
 							"path": [
 								"api",
 								"message_templates"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retreive Templates using Media ID",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {}
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{AuthToken}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "{{url}}/api/message_templates?event-id={{event-id}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"api",
+								"message_templates"
+							],
+							"query": [
+								{
+									"key": "event-id",
+									"value": "{{event-id}}"
+								}
 							]
 						}
 					},
