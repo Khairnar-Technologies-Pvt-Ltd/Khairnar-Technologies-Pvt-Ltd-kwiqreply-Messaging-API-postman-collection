@@ -533,10 +533,7 @@
 						"url": {
 							"raw": "{{url}}/api/message_templates",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"{{url}}"
 							],
 							"port": "8000",
 							"path": [
